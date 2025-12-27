@@ -1,5 +1,5 @@
 /* =========================================
-   ARCHIVO: styles.css (COMPLETO Y DEFINITIVO)
+   ARCHIVO: styles.css (COMPLETO, LIMPIO Y DEFINITIVO)
    ========================================= */
 
 /* --- 1. VARIABLES Y RESET --- */
@@ -28,7 +28,31 @@ body {
     overflow-x: hidden;
 }
 
-/* --- 2. NAVBAR (MEJORADA) --- */
+/* --- 1.1. DETALLES UI PREMIUM (Scrollbar y Selección) --- */
+/* Barra de Scroll Personalizada */
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    border-radius: 5px;
+    border: 2px solid var(--dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Color de Selección de Texto */
+::selection {
+    background-color: var(--accent);
+    color: var(--dark);
+}
+
+
+/* --- 2. NAVBAR --- */
 nav {
     display: flex;
     justify-content: space-between;
@@ -50,12 +74,11 @@ nav {
 }
 .logo span { color: var(--primary); }
 
-/* --- ESTILOS DEL MENÚ MEJORADOS --- */
 nav ul { 
     display: flex; 
     list-style: none; 
     gap: 30px; 
-    align-items: center; /* Centrar verticalmente */
+    align-items: center; 
 }
 
 nav a { 
@@ -64,10 +87,10 @@ nav a {
     font-weight: 500; 
     transition: 0.3s; 
     font-size: 0.95rem; 
-    position: relative; /* Necesario para la animación */
+    position: relative; 
 }
 
-/* Animación de subrayado elegante al pasar el ratón */
+/* Animación de subrayado */
 nav a::after {
     content: '';
     position: absolute;
@@ -83,8 +106,7 @@ nav a:hover::after {
     width: 100%;
 }
 
-/* --- BOTÓN ESPECIAL "CONTACTE" (El último del menú) --- */
-/* Esto selecciona automáticamente el último elemento li */
+/* Botón Contacte (último item) */
 nav ul li:last-child a {
     background: var(--primary);
     padding: 10px 25px;
@@ -93,10 +115,8 @@ nav ul li:last-child a {
     box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
 }
 
-/* Quitamos el subrayado en el botón */
 nav ul li:last-child a::after { display: none; }
 
-/* Efecto hover del botón Contacte */
 nav ul li:last-child a:hover {
     background: var(--accent);
     color: var(--dark);
@@ -159,6 +179,7 @@ nav ul li:last-child a:hover {
     text-shadow: 0 2px 5px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5);
 }
 
+/* ESTILO DEL TEXTO "INTELIGENCIA ARTIFICIAL" (Unificado y Animado) */
 .highlight {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
@@ -168,11 +189,20 @@ nav ul li:last-child a:hover {
     font-size: 2.5rem;
     display: block;
     margin-top: 10px;
-    background: -webkit-linear-gradient(left, var(--primary), var(--accent));
+    
+    /* Gradiente animado */
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite;
+    
     text-shadow: none;
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
 }
 
 .btn-primary {
@@ -197,9 +227,67 @@ nav ul li:last-child a:hover {
     box-shadow: 0 0 30px rgba(58, 134, 255, 0.4);
 }
 
+/* --- SCROLL DOWN INDICATOR (Ratón) --- */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.7;
+}
 
-/* --- 4. ESTRUCTURA GENERAL (ESPACIOS AJUSTADOS) --- */
-section { padding: 80px 20px; } /* REDUCIDO de 100px a 80px */
+.mouse {
+    width: 25px;
+    height: 40px;
+    border: 2px solid var(--light);
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.wheel {
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+    0% { top: 6px; opacity: 1; }
+    100% { top: 20px; opacity: 0; }
+}
+
+.arrows span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid var(--light);
+    border-right: 2px solid var(--light);
+    transform: rotate(45deg);
+    margin: -5px auto;
+    animation: scrollArrow 2s infinite;
+}
+
+.arrows span:nth-child(2) { animation-delay: -0.2s; }
+.arrows span:nth-child(3) { animation-delay: -0.4s; }
+
+@keyframes scrollArrow {
+    0% { opacity: 0; transform: rotate(45deg) translate(-5px, -5px); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: rotate(45deg) translate(5px, 5px); }
+}
+
+
+/* --- 4. ESTRUCTURA GENERAL --- */
+section { padding: 80px 20px; }
 .container { max-width: 1200px; margin: 0 auto; }
 
 .section-title {
@@ -292,17 +380,14 @@ section { padding: 80px 20px; } /* REDUCIDO de 100px a 80px */
 .highlight-card:hover .card-icon { background: var(--accent); color: var(--dark); }
 
 
-/* --- 6. PROYECTOS (ALINEACIÓN PERFECTA - GRID) --- */
+/* --- 6. PROYECTOS --- */
 .project {
     display: grid;
-    /* Grid: Columna Vídeo (400px) - Columna Texto (Resto) */
     grid-template-columns: 400px 1fr;
     align-items: center;
     gap: 60px;
-    
     max-width: 1100px; 
-    margin: 0 auto 80px auto; /* REDUCIDO de 150px a 80px */
-    
+    margin: 0 auto 80px auto;
     opacity: 0; 
     transform: translateY(50px);
     transition: 1s ease;
@@ -313,14 +398,12 @@ section { padding: 80px 20px; } /* REDUCIDO de 100px a 80px */
     transform: translateY(0); 
 }
 
-/* Columna Vídeo */
 .project-video {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-/* Columna Texto */
 .project-details { 
     text-align: left;
     max-width: 650px;
@@ -333,10 +416,10 @@ section { padding: 80px 20px; } /* REDUCIDO de 100px a 80px */
     font-family: 'Playfair Display', serif; 
 }
 
-/* Marco del Teléfono (MÁS ANCHO: 340px) */
+/* Marco del Teléfono */
 .phone-frame {
     width: 340px; 
-    height: 604px; /* Proporción ajustada */
+    height: 604px; 
     border-radius: 35px;
     overflow: hidden;
     border: 8px solid #111;
@@ -351,7 +434,6 @@ section { padding: 80px 20px; } /* REDUCIDO de 100px a 80px */
     object-fit: cover;
 }
 
-/* Overlay encima del vídeo */
 .video-overlay {
     position: absolute;
     bottom: 25px; right: 20px;
@@ -368,21 +450,14 @@ section { padding: 80px 20px; } /* REDUCIDO de 100px a 80px */
 
 .video-overlay i { font-size: 1.9rem; margin-bottom: 5px; color: white; }
 
-.video-caption {
-    text-align: center; margin-top: 15px;
-    color: #888; font-style: italic; font-size: 0.9rem;
-}
-
 
 /* --- 7. DETALLES DE TEXTO (TABS Y PROMPTS) --- */
-/* Prompt Box */
 .prompt-box {
     background: #0a0e17; padding: 20px; border-radius: 8px;
     border-left: 3px solid var(--accent); margin: 15px 0;
     font-family: 'Courier New', monospace; color: #4CC9F0; font-size: 0.9rem;
 }
 
-/* Estilos de Prompts Bonitos */
 .prompt-intro { margin-bottom: 20px; font-size: 0.9rem; color: #aaa; }
 .prompt-structure h4 {
     color: var(--primary); margin-top: 25px; margin-bottom: 10px;
@@ -436,22 +511,21 @@ section { padding: 80px 20px; } /* REDUCIDO de 100px a 80px */
     border-radius: 10px; cursor: pointer; font-weight: bold;
 }
 
-/* --- MEJORAS DEL FORMULARIO (INTERACTIVO) --- */
 .contact-form input:focus, 
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--primary);
-    background: rgba(58, 134, 255, 0.1); /* Fondo azulito muy suave */
-    box-shadow: 0 0 15px rgba(58, 134, 255, 0.3); /* Resplandor */
+    background: rgba(58, 134, 255, 0.1); 
+    box-shadow: 0 0 15px rgba(58, 134, 255, 0.3);
     transition: 0.3s;
 }
 
 .btn-success {
-    background-color: #2ecc71 !important; /* Verde éxito */
+    background-color: #2ecc71 !important;
     border-color: #2ecc71 !important;
     color: white !important;
     box-shadow: 0 0 20px rgba(46, 204, 113, 0.6) !important;
-    pointer-events: none; /* Evita doble clic */
+    pointer-events: none;
 }
 
 
@@ -461,7 +535,6 @@ footer {
     color: #666; font-size: 0.9rem;
 }
 
-/* --- FOOTER PRO --- */
 footer .socials {
     margin-top: 15px;
     display: flex;
@@ -482,7 +555,7 @@ footer .socials a:hover {
 }
 
 
-/* --- 10. BOTÓN WHATSAPP FLOTANTE --- */
+/* --- 10. BOTÓN WHATSAPP --- */
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
@@ -501,8 +574,6 @@ footer .socials a:hover {
     justify-content: center;
     transition: 0.3s;
     text-decoration: none;
-    
-    /* Animación de latido */
     animation: pulse-green 2s infinite;
 }
 
@@ -518,14 +589,13 @@ footer .socials a:hover {
 }
 
 
-/* --- 11. RESPONSIVE (MÓVIL) --- */
+/* --- 11. RESPONSIVE --- */
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 900px) {
     .hero h1 { font-size: 2.5rem; }
     .highlight { font-size: 1.8rem; }
     
-    /* Grid en móvil: Una sola columna */
     .project {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -539,7 +609,6 @@ footer .socials a:hover {
         max-width: 100%;
     }
 
-    /* Tamaño móvil estándar para pantallas pequeñas */
     .phone-frame { 
         width: 100%; 
         max-width: 300px; 
@@ -548,7 +617,6 @@ footer .socials a:hover {
 
     .contact-wrapper { flex-direction: column; }
     
-    /* WhatsApp un pelín más pequeño en móvil */
     .whatsapp-float {
         width: 50px;
         height: 50px;
@@ -556,31 +624,4 @@ footer .socials a:hover {
         bottom: 20px;
         right: 20px;
     }
-}
-/* --- LA GUINDA DEL PASTEL: DETALLES UI PREMIUM --- */
-
-/* 1. Barra de Scroll Personalizada (Solo funciona en Chrome/Edge/Safari) */
-/* El carril de fondo */
-::-webkit-scrollbar {
-    width: 10px;
-    background-color: var(--dark);
-}
-
-/* La barra que se mueve */
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, var(--primary), var(--secondary));
-    border-radius: 5px;
-    border: 2px solid var(--dark); /* Para que parezca flotar */
-}
-
-/* Al pasar el ratón por la barra */
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
-}
-
-/* 2. Color de Selección de Texto (Marca de la casa) */
-/* Cuando seleccionas texto con el ratón, se ve de tu color corporativo */
-::selection {
-    background-color: var(--accent);
-    color: var(--dark);
 }
