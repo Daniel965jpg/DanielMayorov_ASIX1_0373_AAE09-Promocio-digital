@@ -44,37 +44,39 @@
     </header>
 
     <section id="client" class="client-section">
-        <div class="container">
-            <h2 class="section-title reveal">Anàlisi del Projecte</h2>
+        <div class="container reveal">
+            <h2 class="section-title">Anàlisi del Projecte</h2>
             
             <div class="strategy-grid">
-                <div class="strategy-card reveal">
+                
+                <div class="strategy-card">
                     <div class="card-icon"><i class="fa-solid fa-plane-departure"></i></div>
                     <h3>El Client</h3>
                     <h4>Wanderlust Viatges</h4>
                     <p>Una agència boutique especialitzada en escapades de luxe personalitzades. Busquen transmetre exclusivitat i experiències úniques lluny del turisme de masses.</p>
                 </div>
 
-                <div class="strategy-card reveal">
+                <div class="strategy-card">
                     <div class="card-icon"><i class="fa-brands fa-instagram"></i></div>
                     <h3>El Repte</h3>
                     <h4>Viralitat a Xarxes</h4>
                     <p>Captar l'atenció del públic <em>Millennial</em> i <em>Gen-Z</em> a Instagram i TikTok. Necessiten contingut visual impactant en format vertical (9:16) que retingui l'atenció en menys de 3 segons.</p>
                 </div>
 
-                <div class="strategy-card reveal highlight-card">
+                <div class="strategy-card highlight-card">
                     <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
                     <h3>La Solució</h3>
                     <h4>Generació per IA</h4>
                     <p>Ús d'Intel·ligència Artificial Generativa per crear vídeos d'alt impacte visual, reduint costos de producció i maximitzant la freqüència de publicació.</p>
                 </div>
+
             </div>
         </div>
     </section>
 
     <section id="portfolio" class="portfolio-section">
         <div class="container">
-            <h2 class="section-title reveal">Mostres de Vídeo amb IA</h2>
+            <h2 class="section-title">Mostres de Vídeo amb IA</h2>
             
             <article class="project reveal">
                 <div class="project-video">
@@ -92,10 +94,12 @@
                 
                 <div class="project-details">
                     <h3>01. Campanya "Golden Sunset: Portugal"</h3>
+                    
                     <div class="tabs">
                         <button class="tab-link active" onclick="openTab(event, 'fitxa1')">Fitxa Tècnica</button>
                         <button class="tab-link" onclick="openTab(event, 'prompts1')">Prompts i Eines</button>
                     </div>
+
                     <div id="fitxa1" class="tab-content active-tab">
                         <table class="tech-table">
                             <tr><th>Client:</th><td>Wanderlust Viatges</td></tr>
@@ -103,11 +107,36 @@
                             <tr><th>Audiència:</th><td>Parella jove (25-40 anys) amb poder adquisitiu mig-alt.</td></tr>
                             <tr><th>Objectiu:</th><td>Associar la marca amb la calma, la bellesa i l'exclusivitat.</td></tr>
                             <tr><th>Format:</th><td>TikTok (9:16) - Estil "Aesthetic" i relaxant.</td></tr>
+                            <tr><th>Durada:</th><td>15 segons (Format Loop).</td></tr>
+                            <tr><th>Disseny:</th><td>Imatges cinematogràfiques, colors càlids (Golden Hour) i música chill-out.</td></tr>
                         </table>
                     </div>
+
                     <div id="prompts1" class="tab-content">
-                        <div class="prompt-box">
-                            <code>"Vertical 9:16 aspect ratio. Cinematic 4k, slow motion, hyperrealistic sunset beach..."</code>
+                        <p style="font-size: 0.85rem; color: #888; margin-bottom: 15px;">
+                            <strong>Eines seleccionades:</strong> S'ha utilitzat <em>ChatGPT</em> per la seva capacitat creativa en redacció persuasiva i <em>Pictory/Fliki</em> per la seva eficiència en la conversió de Text-a-Vídeo.
+                        </p>
+
+                        <p class="prompt-intro">Per aconseguir un resultat professional, s'ha utilitzat la tècnica de <strong>Prompt Engineering</strong> estructurat:</p>
+                        
+                        <div class="prompt-structure">
+                            <h4><i class="fa-solid fa-pen-nib"></i> Generació del Guió (ChatGPT)</h4>
+                            <ul class="prompt-breakdown">
+                                <li><strong>Rol:</strong> "Actua com un copywriter expert en turisme de luxe."</li>
+                                <li><strong>Tasca:</strong> "Escriu un guió de 15 segons per a un vídeo de TikTok."</li>
+                                <li><strong>Context:</strong> "Imatges d'un atardecer daurat a la costa de Portugal."</li>
+                                <li><strong>Restricció:</strong> "Fes servir un to poètic, sense vendre directament, només inspirant."</li>
+                            </ul>
+                            <div class="prompt-box">
+                                <code>"Descobreix on el sol besa l'oceà. Cascais t'espera. No és només un viatge, és el record que et mereixes. Reserva la teva pau."</code>
+                            </div>
+                        </div>
+
+                        <div class="prompt-structure">
+                            <h4><i class="fa-solid fa-video"></i> Generació Visual (Banc d'imatges / IA)</h4>
+                            <div class="prompt-box">
+                                <code>"Vertical 9:16 aspect ratio. Low angle close-up shot of gentle turquoise ocean waves lapping onto golden sand beach at sunset. Warm golden hour light reflecting on the wet sand. No rocks, just sand and water. Relaxing luxury travel aesthetic, cinematic 4k, slow motion, hyperrealistic."</code>
+                            </div>
                         </div>
                     </div>
                 </div>  
@@ -129,24 +158,53 @@
 
                 <div class="project-details">
                     <h3>02. Campanya "Connexió Natural: Alps"</h3>
+                    
                     <div class="tabs">
                         <button class="tab-link active" onclick="openTab(event, 'fitxa2')">Fitxa Tècnica</button>
                         <button class="tab-link" onclick="openTab(event, 'prompts2')">Prompts i Eines</button>
                     </div>
+
                     <div id="fitxa2" class="tab-content active-tab">
                         <table class="tech-table">
                             <tr><th>Client:</th><td>Wanderlust Viatges</td></tr>
-                            <tr><th>Producte:</th><td>Ruta de senderisme guiada.</td></tr>
-                            <tr><th>Objectiu:</th><td>Transmetre llibertat i desconexió digital.</td></tr>
+                            <tr><th>Producte:</th><td>Ruta de senderisme guiada "Eco-Adventure".</td></tr>
+                            <tr><th>Audiència:</th><td>Amants de la natura i l'esport (30-50 anys).</td></tr>
+                            <tr><th>Objectiu:</th><td>Transmetre llibertat, salut i desconexió digital.</td></tr>
+                            <tr><th>Format:</th><td>Instagram Reels (9:16) - 30 segons.</td></tr>
+                            <tr><th>Disseny:</th><td>Estil naturalista, colors freds/verds i sons de natura immersius.</td></tr>
                         </table>
                     </div>
+
                     <div id="prompts2" class="tab-content">
-                        <div class="prompt-box">
-                            <code>"Detailed textures, sunlight filtering through canopy, 4k mountain stream..."</code>
+                        <p style="font-size: 0.85rem; color: #888; margin-bottom: 15px;">
+                            <strong>Eines seleccionades:</strong> S'ha utilitzat <em>ChatGPT</em> per generar un Storytelling emocional i <em>Fliki</em> per la selecció automàtica de clips d'estoc d'alta qualitat.
+                        </p>
+
+                        <p class="prompt-intro">Aplicació de tècniques avançades de <strong>Chain-of-Thought Prompting</strong> per garantir coherència:</p>
+                        
+                        <div class="prompt-structure">
+                            <h4><i class="fa-solid fa-pen-nib"></i> Generació del Copy (ChatGPT)</h4>
+                            <ul class="prompt-breakdown">
+                                <li><strong>Rol:</strong> "Ets un guia de muntanya i storyteller."</li>
+                                <li><strong>Context:</strong> "Vídeo d'una parella creuant un llac alpí."</li>
+                                <li><strong>Objectiu:</strong> "Generar sensació d'aventura segura."</li>
+                                <li><strong>Restricció:</strong> "Fes servir emojis de natura i hashtags de tendència #EcoTravel."</li>
+                            </ul>
+                            <div class="prompt-box">
+                                <code>"Respira. Camina. Sent. La muntanya no et demana res i t'ho dona tot. 🌲🏔️ Uneix-te a l'aventura. #Wanderlust #HikingLife"</code>
+                            </div>
+                        </div>
+
+                        <div class="prompt-structure">
+                            <h4><i class="fa-solid fa-video"></i> Generació Visual (Fliki / Stock)</h4>
+                            <div class="prompt-box">
+                                <code>"Vertical 9:16 aspect ratio. Medium shot of an active couple wearing technical hiking gear carefully crossing a large mossy fallen tree log bridge over a rushing mountain stream. Close up on their hiking boots stepping over wet autumn leaves on the log. Sunlight filtering through the canopy, cinematic 4k, slow motion nature documentary style, detailed textures."</code>
+                            </div>
                         </div>
                     </div>
                 </div>
             </article>
+
         </div>
     </section>
 
@@ -161,11 +219,16 @@
                         <i class="fa-solid fa-envelope"></i>
                         <span>contacte@ddmm-digital.com</span>
                     </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>L'Hospitalet de Llobregat, BCN</span>
+                    </div>
                 </div>
+
                 <form class="contact-form">
                     <input type="text" placeholder="Nom de la teva empresa" required>
                     <input type="email" placeholder="El teu correu" required>
-                    <textarea rows="5" placeholder="Com et podem ayudar?" required></textarea>
+                    <textarea rows="5" placeholder="Com et podem ajudar?" required></textarea>
                     <button type="submit" class="btn-primary">Enviar Missatge</button>
                 </form>
             </div>
@@ -175,13 +238,22 @@
     <footer>
         <div class="container">
             <p>© 2024 DDMM Digital. Creat per al Mòdul 1665 & 0373.</p>
+            
             <div class="socials">
-                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
+            
+            <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 10px;">
+                Dissenyat amb passió a Barcelona 📍
+            </p>
         </div>
     </footer>
+    
+    <a href="https://wa.me/34637251817" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
     
     <script src="script.js"></script>
 </body>

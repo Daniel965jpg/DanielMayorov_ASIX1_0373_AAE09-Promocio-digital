@@ -626,72 +626,71 @@ footer .socials a:hover {
     }
 }
 /* =========================================
-   NUEVOS EFECTOS DE ANIMACIÓN
+   EFECTOS SOLICITADOS: LOGO Y APARECER LENTO
    ========================================= */
 
-/* 1. EFECTO PARA EL LOGO (DDMM Digital) */
+/* 1. ANIMACIÓN DEL LOGO DDMM Digital */
 .logo {
     position: relative;
+    overflow: hidden; /* Necesario para el efecto de brillo */
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.4s ease;
     display: inline-block;
 }
 
-/* Animación de entrada al cargar la página */
-@keyframes logoEntrance {
-    from { opacity: 0; transform: translateX(-20px); filter: blur(10px); }
-    to { opacity: 1; transform: translateX(0); filter: blur(0); }
-}
-
-.logo {
-    animation: logoEntrance 1s ease-out forwards;
-}
-
-/* Efecto de brillo "Scanner" al pasar el ratón */
 .logo:hover {
-    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
-    transform: scale(1.05);
+    transform: scale(1.05); /* Se agranda un pelín al pasar el ratón */
+    text-shadow: 0 0 10px var(--primary);
 }
 
-.logo::before {
+/* Efecto de rayo de luz (Scanner) que pasa por el logo */
+.logo::after {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    transition: 0.5s;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-20deg);
 }
 
-.logo:hover::before {
+.logo:hover::after {
     left: 100%;
-    transition: 0.6s;
+    transition: 0.6s ease-in-out;
 }
 
 
-/* 2. CONFIGURACIÓN DE REVELACIÓN (SCROLL) */
-/* Estado inicial de cualquier cosa con la clase .reveal */
+/* 2. EFECTO REVEAL (Aparecer poco a poco al deslizar) */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    visibility: hidden;
+    transform: translateY(50px); /* Empieza 50px más abajo */
+    transition: opacity 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1); /* 1.5 seg para que sea lento */
 }
 
-/* Estado cuando JS añade la clase .active-scroll */
 .reveal.active-scroll {
     opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
+    transform: translateY(0); /* Sube a su sitio */
 }
 
-/* 3. EFECTO ESCALONADO (Aparición "poco a poco") */
-/* Aplicamos retardos a las tarjetas de estrategia para que aparezcan una tras otra */
-.strategy-grid .strategy-card:nth-child(1) { transition-delay: 0.1s; }
-.strategy-grid .strategy-card:nth-child(2) { transition-delay: 0.3s; }
-.strategy-grid .strategy-card:nth-child(3) { transition-delay: 0.5s; }
+/* Opcional: Si quieres que las tarjetas de estrategia aparezcan una tras otra */
+.strategy-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s ease-out;
+}
 
-/* También para los elementos dentro de las secciones si quieres */
-.project-video { transition-delay: 0.2s; }
-.project-details { transition-delay: 0.4s; }
+.reveal.active-scroll .strategy-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delays para las 3 tarjetas: aparecen escalonadas */
+.strategy-card:nth-child(1) { transition-delay: 0.2s; }
+.strategy-card:nth-child(2) { transition-delay: 0.5s; }
+.strategy-card:nth-child(3) { transition-delay: 0.8s; }
+/* EFECTO DE DESPLAZAMIENTO SUAVE */
+html {
+    scroll-behavior: smooth;
+}
